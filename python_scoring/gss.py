@@ -1,6 +1,8 @@
 import datetime as dt
 from datetime import datetime
 
+import pandas as pd
+
 
 def tm(strtime):
 	tm = datetime.strptime(strtime, '%H:%M')
@@ -117,7 +119,6 @@ def insomnia(self, answers):
 	return insomnia
 
 class gss15:
-
     def __init__(self, id, answers):
         """
         Parameters
@@ -147,3 +148,24 @@ class gss15:
         self.total = sum(subdomains)
 
     
+if __name__ == "__main__":
+	df = pd.read_csv('data.csv')
+	domains = [
+               'problem',
+               'duration',
+               'timing',
+               'regularity',
+               'adequacy',
+               'insomnia',
+               'total'
+    ]
+	for d in domains: df[f"{d}_score"] = ''
+    
+	for i, r in df.iterrows():
+		px = r['px_id']
+		answers = [r[f"q_{c+1}"] for c in range(15)]
+		g = gss15(id=px, answers=answers)
+		for d in domains:
+			df[f"{d}_score"][i] = getattr(g, d)
+
+	df.to_csv('data.csv', index=False)
