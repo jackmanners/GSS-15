@@ -33,14 +33,14 @@ python python_scoring/python_main.py
 If you have not already, select 'Create Template' to create a template csv file to input your data and fill this in with your exported data.
 The expected format can be found in the section below.
 
-> ### Scoring
+#### Scoring
 
 Once you have filled in the 'data.csv' template, attach this using 'Select Datafile'.
 The window will promptly close and your scored data should be in the same file. New columns will have been added to represent the subdomain and total scores.
 
-> ### Data Formatting
+#### Data Formatting
 
-| **px_id**       | **q_1** | **q_2**          | **q_3**          | **q_4**       | **q_5**          | **q_6**          | **q_7**       | **q_8** | **q_9** | **q_10** | **q_11** | **q_12** | **q_13** | **q_14** | **q_15** |
+| **participant_id**       | **question_1** | **question_2**          | **question_3**          | **question_4**       | **question_5**          | **question_6**          | **question_7**       | **question_8** | **question_9** | **question_10** | **question_11** | **question_12** | **question_13** | **question_14** | **question_15** |
 | ----------------- | --------- | ------------------ | ------------------ | --------------- | ------------------ | ------------------ | --------------- | --------- | --------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 | _Input Guide_ | _0-2_   | _24H Time (HH:MM)_ | _24H Time (HH:MM)_ | _Hours (HH:MM)_ | _24H Time (HH:MM)_ | _24H Time (HH:MM)_ | _Hours (HH:MM)_ | _0-5_   | _0-3_   | _0-4_    | _0-3_    | _0-3_    | _0-3_    | _0-3_    | _0-3_    |
 | exampleid001    | 2       | 21:00            | 7:00             | 9:00          | 22:00            | 8:00             | 8:00          | 1       | 0       | 3        | 0        | 0        | 0        | 0        | 0        |
