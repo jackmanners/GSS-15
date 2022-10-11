@@ -4,7 +4,7 @@
 
 This repository contains scoring codes for the Good Sleeper Scale-15 items. </br>
 
-The manuscript can be found at [doi.org/10.1111/jsr.13717](https://doi.org/10.1111/jsr.13717).c
+The manuscript can be found at [doi.org/10.1111/jsr.13717](https://doi.org/10.1111/jsr.13717). </br>
 The open-source questionnaire and scoring guide can be found on [osf.io/na6jt](https://osf.io/na6jt/). </br>
 
 ---
