@@ -2,20 +2,23 @@
 
 >*by Manners, J., Appleton, S. L., Reynolds, A. C., Melaku, Y. A., Gill, T. K., Lovato, N., Sweetman, A., Bickley, K., Adams, R., Lack, L., and Scott, H.*
 
-This repository contains scoring codes for the Good Sleeper Scale-15 items. </br>
+This repository contains scoring codes for the Good Sleeper Scale-15 items. This is currently only implemented in Python, though expect an R version soon.</br>
+Regardless, `python_scoring/gss.py` should offer insight into how to automate scoring in other languages. Scoring is divided into sub-domains for ease of reading, but I'd hardly call anything I write especially Pythonic so apologies for that. </br>
 
 The manuscript can be found at [doi.org/10.1111/jsr.13717](https://doi.org/10.1111/jsr.13717). </br>
 The open-source questionnaire and scoring guide can be found on [osf.io/na6jt](https://osf.io/na6jt/). </br>
 
+##### Tkinter GUI uses the [Azure](https://github.com/rdbende/Azure-ttk-theme) theme for ttk.
+
 ---
 ## Requirements
 
-Requirements can be found in 'requirements.txt', but main packages used are:
+Requirements can be found in `requirements.txt`, but main packages used are:
 - Python 3 
 - pandas
 - sv-ttk
 
-If you have python installed already, run 'install_requirements.sh' or with the below code to create a virtual environment and install required packages. 
+If you have python installed already, run `install_requirements.sh` or with the below code to create a virtual environment and install required packages. 
 ```sh
 pip install -r requirements.txt
 ```
@@ -23,19 +26,19 @@ pip install -r requirements.txt
 ## Usage
 
 Scripts and tkinter GUI has been included to simplify usage. 
-If you wish to omit the GUI or implement yourself, the scoring code for GSS-15 can be found in 'python_scoring/gss.py'.
+If you wish to omit the GUI or implement yourself, the scoring code for GSS-15 can be found in `python_scoring/gss.py`.
 
-Run using the included 'run.sh' or with the below.
+Run using the included `run.sh` or with the below.
 ```sh
 python python_scoring/python_main.py
 ```
 
-If you have not already, select 'Create Template' to create a template csv file to input your data and fill this in with your exported data.
+If you have not already, select `Create Template` to create a template csv file to input your data and fill this in with your exported data.
 The expected format can be found in the section below.
 
 #### Scoring
 
-Once you have filled in the 'data.csv' template, attach this using 'Select Datafile'.
+Once you have filled in the `data.csv` template, attach this using `Select Datafile`.
 The window will promptly close and your scored data should be in the same file. New columns will have been added to represent the subdomain and total scores.
 
 #### Data Formatting

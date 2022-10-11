@@ -103,7 +103,7 @@ def regularity(self, answers):
 def adequacy(self, answers):
 
 	q10 = int(answers[9])
-	q14 = 0 - int(answers[13])
+	q14 = int(answers[13])
 	q15 = 3 - int(answers[14])
 	adequacy = q10+q14+q15
 
