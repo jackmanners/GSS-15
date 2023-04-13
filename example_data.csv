@@ -1,0 +1,4 @@
+participant_id,question_1,question_2,question_3,question_4,question_5,question_6,question_7,question_8,question_9,question_10,question_11,question_12,question_13,question_14,question_15,problem_score,duration_score,timing_score,regularity_score,adequacy_score,insomnia_score,total_score
+exampleid001,2,21:00,7:00,9:00,22:00,8:00,8:00,1,0,3,0,2,1,2,3,5,5,6,3,5,6,30
+examplemax,1,22:30,6:30,8:00,22:30,6:30,8:00,2,1,4,0,0,0,3,0,10,6,10,7,10,9,52
+examplemin,0,13:00,17:00,4:00,6:00,10:00,11:00,0,0,0,3,3,3,0,3,0,0,0,0,0,0,0
