@@ -38,9 +38,8 @@ def duration(self, answers):
 
 def timing(self, answers):
 
-	def mp_cats(mp):
-		dif = (mp-tm('00:00')-dt.timedelta(days=1)).seconds/60
-		result = (
+	def mp_cats(dif):
+		mp_cat = (
 			0 if dif<=45 or dif>=255 else\
 			1 if dif<=60 or dif>=240 else\
 			2 if dif<=75 or dif>=225 else\
@@ -50,10 +49,15 @@ def timing(self, answers):
 			6 if dif<=135 or dif>=165 else\
 			7)
 
-		return result
+		return mp_cat
 
 	weeksleep, weekwake, endsleep, endwake = \
-	tm(answers[1]), tm(answers[2]), tm(answers[4]), tm(answers[5])
+		tm(answers[1]), tm(answers[2]), tm(answers[4]), tm(answers[5])
+
+	if weekwake.time() < weeksleep.time():
+		weekwake += dt.timedelta(days=1)
+	if endwake.time() < endsleep.time():
+		endwake += dt.timedelta(days=1)
 
 	a8 = int(answers[7])
 	a9 = int(answers[8])
@@ -67,8 +71,23 @@ def timing(self, answers):
 		 1 if a9==1 or a9==2 else\
 		 print('Bad Q9 number')
 
-	week_mp = mp_cats(weeksleep + (weekwake+dt.timedelta(days=1) - weeksleep) / 2)
-	timing = q8+q9+week_mp
+	time_diff = (weekwake - weeksleep)/2
+	midpoint = (weeksleep + time_diff)
+	print(f"Sleep: {weeksleep}")
+	print(f"Wake: {weekwake}")
+	print(f"Midpoint: {midpoint}")
+
+	if midpoint.time() < dt.time(12):
+		midnight = datetime.combine(midpoint.date(), dt.time.min)
+	else:
+		midnight = datetime.combine(midpoint.date() + dt.timedelta(days=1), dt.time.min)
+
+	# Calculate the difference in minutes
+	minutes_from_midnight = int((midpoint - midnight).total_seconds() / 60)
+	print(f"Minutes from midnight: {minutes_from_midnight}")
+	mp_cat = mp_cats(abs(minutes_from_midnight))
+
+	timing = q8+q9+mp_cat
 
 	return timing
 
@@ -76,12 +95,17 @@ def timing(self, answers):
 def regularity(self, answers):
 
 	weeksleep, weekwake, endsleep, endwake = \
-	tm(answers[1]), tm(answers[2]), tm(answers[4]), tm(answers[5])
+		tm(answers[1]), tm(answers[2]), tm(answers[4]), tm(answers[5])
+	
+	if weekwake.time() < weeksleep.time():
+		weekwake += dt.timedelta(days=1)
+	if endwake.time() < endsleep.time():
+		endwake += dt.timedelta(days=1)
 
-	week_mp = (weeksleep + (weekwake+dt.timedelta(days=1) - weeksleep) / 2)\
-		-dt.timedelta(days=1)
-	end_mp = (endsleep + (endwake+dt.timedelta(days=1) - endsleep) / 2)\
-		-dt.timedelta(days=1)
+	week_time_diff = (weekwake - weeksleep)/2
+	week_mp = (weeksleep + week_time_diff)
+	end_time_diff = (endwake - endsleep)/2
+	end_mp = (endsleep + end_time_diff)
 
 	mp_dif = abs(week_mp-end_mp).seconds/60
 	sd_dif = abs(tm(answers[3])-tm(answers[6])).seconds/60
@@ -162,10 +186,11 @@ if __name__ == "__main__":
 	for d in domains: df[f"{d}_score"] = ''
     
 	for i, r in df.iterrows():
-		px = r['px_id']
-		answers = [r[f"q_{c+1}"] for c in range(15)]
+		px = r['participant_id']
+		answers = [r[f"question_{c+1}"] for c in range(15)]
+		print(answers)
 		g = gss15(id=px, answers=answers)
+		print(g.total)
 		for d in domains:
 			df[f"{d}_score"][i] = getattr(g, d)
-
 	df.to_csv('data.csv', index=False)

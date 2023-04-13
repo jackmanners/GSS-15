@@ -32,8 +32,8 @@ def create_template():
     folder_selected = fd.askdirectory()
     path = f'{folder_selected}/data.csv'
 
-    columns = ['px_id']
-    questions = [f"q_{c+1}" for c in range(15)]
+    columns = ['participant_id']
+    questions = [f"question_{c+1}" for c in range(15)]
     for q in questions: columns.append(q)
 
     df = pd.DataFrame(columns=columns)
@@ -63,8 +63,8 @@ def main():
     for d in domains: df[f"{d}_score"] = ''
     
     for i, r in df.iterrows():
-        px = r['px_id']
-        answers = [r[f"q_{c+1}"] for c in range(15)]
+        px = r['participant_id']
+        answers = [r[f"question_{c+1}"] for c in range(15)]
         g = gss15(id=px, answers=answers)
         for d in domains:
             df[f"{d}_score"][i] = getattr(g, d)
