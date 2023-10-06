@@ -1,20 +1,22 @@
 # The Good Sleeper Scale-15 items: a questionnaire for the standardised assessment of good sleepers
 
->*by Manners, J., Appleton, S. L., Reynolds, A. C., Melaku, Y. A., Gill, T. K., Lovato, N., Sweetman, A., Bickley, K., Adams, R., Lack, L., and Scott, H.*
+>*Manners, J., Appleton, S. L., Reynolds, A. C., Melaku, Y. A., Gill, T. K., Lovato, N., Sweetman, A., Bickley, K., Adams, R., Lack, L., and Scott, H.*
 
 This repository contains scoring codes for the Good Sleeper Scale-15 items. This is currently only implemented in Python and Excel, though an R version will be created if there is interest.</br>
-`GSS15 - Excel Calculator.xlsx` is likely the simplest use case for auto-scoring. <br>
-**Please refer to the DATA FORMATTING section below, or the example data included in the .csv and .xlsx files to ensure compatability.**
-<br><br>
-`python_scoring/gss.py` should offer insight into how to automate scoring in other languages. Scoring is divided into sub-domains for ease of reading, but I'd hardly call anything I write especially Pythonic so apologies for that. </br>
 
 The manuscript can be found at [doi.org/10.1111/jsr.13717](https://doi.org/10.1111/jsr.13717). </br>
 The open-source questionnaire and scoring guide can be found on [osf.io/na6jt](https://osf.io/na6jt/). </br>
 
-##### Tkinter GUI uses the [Azure](https://github.com/rdbende/Azure-ttk-theme) theme for ttk.
+## Scoring
+
+**EXCEL:** `GSS15 - Excel Calculator.xlsx` is likely the simplest use case for auto-scoring. </br>
+**Please refer to the DATA FORMATTING section below, or the example data included in the .csv and .xlsx files to ensure compatability.**
+</br></br>
+**PYTHON:** Navigate to the **USAGE** section below for instructions on how to score data using Python.
+`python_scoring/gss.py` should offer insight into how to automate scoring in other languages. Scoring is divided into sub-domains for ease of reading, but I'd hardly call anything I write especially Pythonic so apologies for that. </br>
 
 ---
-## Requirements
+### Python Requirements
 
 Requirements can be found in `requirements.txt`, but main packages used are:
 - Python 3 
@@ -25,6 +27,7 @@ If you have python installed already, run `install_requirements.sh` or with the 
 ```sh
 pip install -r requirements.txt
 ```
+##### Tkinter GUI uses the [Azure](https://github.com/rdbende/Azure-ttk-theme) theme for ttk.
 
 ## Usage
 
