@@ -1,4 +1,0 @@
-participant_id,q4_recoded,q7_recoded,q8_recoded,q9_recoded,weekday_mp,weekend_mp,midpoint_score,social_jetlag_score,sleep_duration_discrepancy_score,problem_score,duration_score,timing_score,regularity_score,adequacy_score,insomnia_score,total_score
-exampleid001,2,3,1,0,120,180,5,1,2,5,5,6,3,5,6,30
-examplemax,3,3,2,1,150,150,7,3,4,10,6,10,7,10,9,52
-examplemin,0,0,0,0,900,480,0,0,0,0,0,0,0,0,0,0
